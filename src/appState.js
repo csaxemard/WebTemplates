@@ -1,0 +1,168 @@
+import { ref, watch } from "vue";
+
+import Home from "@/Views-Main/Home.vue";
+
+
+
+// --- Functions ---
+
+function buildCategories(title) {
+    const categoriesMap = {};
+
+    for (const path in modules) {
+        const parts = path.split("/");
+
+        const templatesIndex = parts.indexOf("Views-Templates");
+        const folder = parts[templatesIndex + 1];
+
+        // Ignore tout ce qui est dans un sous-dossier components
+        if (parts.includes("components")) continue;
+
+        let file;
+        let relUrl;
+
+        if (parts.length === templatesIndex + 3) {
+            // Cas 1: Templates/Category/Main.vue
+            file = parts[templatesIndex + 2].replace(".vue", "");
+            relUrl = file.toLowerCase();
+        } else {
+            // Cas 2: Templates/Category/TemplateName/TemplateMain.vue
+            file = parts[templatesIndex + 3].replace(".vue", "");
+            relUrl = parts[templatesIndex + 2].toLowerCase();
+        }
+
+        if (!categoriesMap[folder]) {
+            categoriesMap[folder] = {
+                name: folder,
+                relUrl: folder.toLowerCase(),
+                components: [],
+            };
+        }
+
+        categoriesMap[folder].components.push({
+            name: modules[path].config?.name ?? file,
+            component: modules[path].default,
+            relUrl,
+            title: `${modules[path].config?.name ?? file} | ${title}`,
+        });
+    }
+
+    return Object.values(categoriesMap);
+}
+
+export function initCssThemeVariables() {
+    const style = document.createElement("style")
+    
+    let light = "#root {\n"
+    let dark = "#root.dark {\n"
+
+    Object.entries(appState.cssThemeVariables).forEach(([key, themeProperties]) => {
+        light += `--${key}: ${themeProperties[0]};\n`
+        dark += `--${key}: ${themeProperties[1] || themeProperties[0]};\n`
+    });
+
+    light += "}";
+    dark += "}";
+    
+    style.textContent = "/* [Dev note] Style generated from appState.js */\n" + light + "\n" + dark
+    style.id = "css-theme-variables"
+    style.dataset.devNote = "Style generated from appState.js"
+    document.head.appendChild(style)
+}
+
+export function initLocalStorage() {
+    if (Boolean(localStorage.getItem("theme")) == true) {
+        appState.theme.value = localStorage.getItem("theme");
+    } else {
+        localStorage.setItem("theme", appState.theme.value);
+    }
+}
+
+function updateTheme() {
+    localStorage.setItem("theme", appState.theme.value);
+}
+
+export function switchTheme() {
+    if (appState.theme.value == "light") {
+        appState.theme.value = "dark";
+    } else {
+        appState.theme.value = "light";
+    }
+}
+
+
+
+// --- Main ---
+
+const modules = import.meta.glob("@/Views-Templates/**/*.vue", { eager: true });
+const title = "Web Templates";
+
+// appState :
+const appState = {
+    titleDefault: title,
+
+    cssThemeVariables: {
+        // cssVarName: ["valueLight", "valueDark", "maybe3rdTheme?"]
+        // Si dark n'a pas de valeur, il prend la valeur de light comme fallback
+
+        /* Bg, aplats */
+        bg: ["#fff", "#3e3e3e"],
+        bgTop1: ["#f0f0f0", "#505050"],
+        bgTop2: ["#e0e0e0", "#606060"],
+        bgTop1Colored: ["#ecf2fc", "#4b5056"],
+
+        /* Effects */
+
+        boxBorder: ["transparent", "var(--divider)"],
+        /* Effects */
+        divider: ["#3c3c3c1f", "#5454547a"],
+        shadow: ["rgba(0, 0, 0, .1) 0 2px 4px 0", ""],
+        shadow2: ["0 12px 32px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08)", ""],
+
+        
+        /* Accents */
+        /* Accents */
+        emph: ["#ff6052", "#ff7e72"],
+        emph2: ["#ffa632", ""],
+        emph3: ["#008000", ""],
+
+        /* Text default */
+        text: ["black", "white"],
+        textSub1: ["#5f5f5f", "#c0c0c0"],
+        link: ["#0b57d0", "#9bc2ff"],
+        linkNav: ["#213547", "#0c35ff"],
+        linkNavHover: ["var(--link)", ""],
+        
+        /* Button default */
+        btnBg: ["#fff", "var(--bgTop1)"],
+        btnBgHover: ["#ecf2fc", "var(--bgTop2)"],
+        btnBgActive: ["#bdd6ff", "#9b9b9b"],
+    },
+
+    theme: ref("dark"),
+
+    mainRoutes: [{ path: "/", component: Home, meta: { title: `${title}` } }],
+
+    // categories: [
+    //     {
+    //         name: "Boutons",
+    //         relUrl: "boutons",
+    //         components: [
+    //             {
+    //                 name: Boutons1,
+    //                 component: Component,
+    //                 relUrl: "boutons1",
+    //                 title: "Boutons1 | Web Templates",
+    //             },
+    //         ],
+    //     },
+    // ],
+};
+appState.categories = buildCategories(title);
+
+// watch appState reactive values :
+watch(appState.theme, (themeVal) => {
+    updateTheme(themeVal);
+});
+
+export default appState;

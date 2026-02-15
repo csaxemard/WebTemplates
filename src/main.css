@@ -1,0 +1,145 @@
+/* --- Vars --- */
+
+#root {
+    --font: Verdana, Geneva, Tahoma, sans-serif;
+    --transitionsDefault: background .5s, color .5s;
+    --linkNavFontSize: 19px;
+    
+    /* Les variables de thèmes sont stockées dans le appState et générées automatiquement */
+}
+
+
+
+/* Tags default */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    text-underline-offset: 3px;
+
+    transition: var(--transitionsDefault);
+
+    /* transition-property: width, height, top, right, bottom, left,
+        transform, scale, rotate,
+        background-color, color, opacity;
+    transition-duration: .5s; */
+}
+
+h1 {
+    font-weight: normal;
+}
+
+a {
+    color: var(--link);
+}
+
+button {
+    /* pos */
+    padding: 5px;
+    border: none;
+
+    /* prop */
+    background-color: var(--btnBg);
+    color: var(--text);
+    border-radius: 12px;
+    cursor: pointer;
+
+    /* content pos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: var(--btnBgHover);
+
+    }
+
+    &:active {
+        background-color: var(--btnBgActive);
+        scale: .9;
+        transition: scale 0s;
+    }
+} 
+
+
+
+/* --- Classes générales --- */
+
+.charAsIcon {
+    line-height: 1;
+}
+
+
+
+/* --- This app --- */
+
+
+
+/* --- Animations --- */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes angryText {
+    0% {
+        transform: skew(-10deg);
+    }
+
+    20% {
+        transform: skew(10deg);
+        transform: rotate(1deg);
+    }
+
+    30% {
+        transform: skew(-10deg);
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: skew(5deg);
+    }
+
+    70% {
+        transform: skew(-10deg);
+        transform: rotate(1deg);
+    }
+
+    100% {
+        transform: skew(-0deg);
+        transform: rotate(0deg);
+    }
+}
+
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .3s, transform .3s !important;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+/* slideVert */
+.slideVert-enter-active,
+.slideVert-leave-active {
+    transition: transform .3s opacity .3s !important;
+}
+
+.slideVert-enter-from,
+.slideVert-leave-to {
+    transform: translateY(-70px);
+    opacity: 0;
+}
