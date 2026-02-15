@@ -20,12 +20,14 @@ Il contient également une liste de sites dont le design me sert de référence.
 ### Backlog
 - finir de réparer le style de CardList
 - Enlever les trucs inutiles de script setup de cardlist
-- header faire que le headerHeight soit de getComputedStyle du header
 - Styliser les Web references
+- Home: Transformer la liste de references en outils pour y mettre un commentaire, parreil pour les outils
+- Home: Indenter un peu resources par rapport au h1
 
-<!-- <br>
+<br>
 
-### Idées -->
+### Idées
+- pour une liste de boutons, des boutons au design généré aléatoirement ? Des blobs ? Des oeufs ? (comme le blob de app.haikei.app)
 
 ##
 Date début : 12 février 2026

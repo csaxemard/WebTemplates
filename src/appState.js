@@ -95,7 +95,7 @@ export function switchTheme() {
 // --- Main ---
 
 const appState = {
-    APP_VERSION: "0.3", // Last commit was 0.2
+    APP_VERSION: "0.4", // Last commit was 0.3
     titleDefault: "Web Templates",
 
     cssThemeVariables: {
