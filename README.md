@@ -13,16 +13,15 @@ Il contient également une liste de sites dont le design me sert de référence.
 
 ### Utilisation
 - `npm install` : Installe les dépendances
-- `launch.bat` : Lance l'application avec vite.
+- `launch.bat` : Lance l'application avec vite
 
 <br>
 
 ### Backlog
 - finir de réparer le style de CardList
 - Enlever les trucs inutiles de script setup de cardlist
-- Mettre les bonnes couleurs des links dans le header
 - header faire que le headerHeight soit de getComputedStyle du header
-- auto increment APP_VERSION
+- Styliser les Web references
 
 <!-- <br>
 

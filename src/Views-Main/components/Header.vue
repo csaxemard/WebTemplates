@@ -17,12 +17,12 @@
 </script>
 
 <template>
-    <div class="componentContainer">
+    <div class="componentContainer" :class="appState.theme.value">
         <header :class="{headerIsHidden: headerIsHidden }">
             <RouterLink to="/" class="appName">Web Templates</RouterLink>
     
             <nav class="navbar">
-                <button class="charAsIcon themeSwitch" type="button" role="switch" @click="switchTheme()">{{ appState.theme.value == "light" ? "🌙" : "☀️" }}</button>
+                <button class="charAsIcon themeSwitch" type="button" role="switch" @click="switchTheme()">{{ appState.theme.value == "light" ? "🌙" : "🔆" }}</button>
     
                 <div class="navDrawer-container"
                     v-for="(cat, index) in appState.categories"
@@ -32,11 +32,12 @@
                     <RouterLink class="navDrawerHandle navLink"
                         :to="`/${cat.relUrl}`"
                         >
-                        <span class="category">{{ cat.name }}</span><span class="charAsIcon"> ▿</span>
+                        <span class="category">{{ cat.name }}</span><span class="charAsIcon" v-if="cat.components.length > 1"> ▿</span>
                     </RouterLink>
     
                     <Transition name="fade">
                         <ul class="navDrawer"
+                            v-if="cat.components.length > 1"
                             v-show="openedDrawerIndex == index"
                             @mouseenter="openDrawer(index)"
                             >
@@ -66,6 +67,20 @@
     .componentContainer {
         /* Vars */
         --headerHeight: 70px;
+        --linkNav: #3876d9;
+        --linkNavHover: #4cc0ff;
+        --linkNavDrawerHover: #4cc0ff;
+        --btnBgNavHoverColored: #ecf2fc;
+        --btnBgNavActiveColored: #bdd6ff;
+        
+        &.dark {
+            --linkNavDrawerHover: #4cc0ff;
+            --linkNav: #e6e6e6;
+            --linkNavHover: #42b883;
+            --linkNavDrawerHover: #42b883;
+            --btnBgNavHoverColored: var(--bgTop2);
+            --btnBgNavActiveColored: #757575;
+        }
 
         transition: height .5s, var(--transitionDefaults);
         height: calc(var(--headerHeight) * v-bind("headerIsHidden ? 0 : 1"));
@@ -103,6 +118,7 @@
         font-size: large;
         background-color: transparent;
         transition: rotate .5s ease-out, var(--transitionDefaults);
+        filter: grayscale();
 
         &:active {
             rotate: 360deg;
@@ -130,16 +146,16 @@
             font-size: var(--linkNavFontSize);
             text-decoration: none;
             border-radius: 50px;
-            transition: background-color .2s, var(--transitionDefaults);
+            transition:var(--transitionDefaults), background-color .2s;
             
             &:hover {
                 color: var(--linkNavHover);
-                background-color: var(--btnBgHover);
+                background-color: var(--btnBgNavHoverColored);
                 cursor: pointer;
             }
 
             &:active {
-                background-color: var(--btnBgActive);
+                background-color: var(--btnBgNavActiveColored);
             }
 
             &.navDrawerHandle:hover {
@@ -152,11 +168,11 @@
                 padding: 10px 15px;
                 
                 /* prop */
-                transition: color 0.25s, var(--transitionDefaults);
+                transition:var(--transitionDefaults), color 0.25s;
                 
                 &:hover {
                     background-color: transparent;
-                    /* color: var(--emph); */
+                    color: var(--linkNavDrawerHover);
                 }
             }
         }
@@ -169,6 +185,7 @@
 
         .navDrawer-container {
             position: relative;
+            z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -189,11 +206,11 @@
                 /* pos */
                 position: absolute;
                 top: 40px;
-                /* box-shadow: var(--shadow) 0px 3px 4px 1px; */
                 padding: 10px 0;
                 border-radius: 12px;
                 width: max-content;
                 max-width: 300px;
+                z-index: 5;
                 
                 /* prop */
                 background-color: var(--bg);
@@ -228,13 +245,18 @@
         right: 10px;
         width: 30px;
         height: 20px; 
+            padding-top: calc(2px * v-bind("headerIsHidden ? 2.5 : 1"));
        
         /* prop */
         background-color: var(--bgTop1);
         transition: top .5s, var(--transitionDefaults);
-
+        
         &.headerIsHidden {
             top: 10px
+        }
+        
+        &:hover {
+            background-color: var(--bgTop2);
         }
     }
 

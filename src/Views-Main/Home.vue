@@ -20,7 +20,8 @@
             <h1>Bienvenue sur Web Templates</h1>
 
             <section class="references">
-                <h2>Références de sites</h2>
+                <h2>Web References</h2>
+                <p class="small"></p>
                 <div v-for="(ref, index) in References" :key="index">
                     <a :href="ref" target="_blank" rel="noopener noreferrer">{{ getHostname(ref) }}</a>
                 </div>

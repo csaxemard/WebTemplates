@@ -67,7 +67,6 @@ button {
 
     &:hover {
         background-color: var(--btnBgHover);
-
     }
 
     &:active {
@@ -83,6 +82,10 @@ button {
 
 .charAsIcon {
     line-height: 1;
+}
+
+.small {
+    font-size: small;
 }
 
 

@@ -95,7 +95,7 @@ export function switchTheme() {
 // --- Main ---
 
 const appState = {
-    APP_VERSION: "0.2",
+    APP_VERSION: "0.3", // Last commit was 0.2
     titleDefault: "Web Templates",
 
     cssThemeVariables: {
@@ -106,12 +106,11 @@ const appState = {
         bg: ["#fff", "#3e3e3e"],
         bgTop1: ["#f0f0f0", "#505050"],
         bgTop2: ["#e0e0e0", "#606060"],
+        bgTop3: ["#f0f0f0", "#707070"],
         bgTop1Colored: ["#ecf2fc", "#4b5056"],
 
         /* Effects */
-
         boxBorder: ["transparent", "var(--divider)"],
-        /* Effects */
         divider: ["#3c3c3c1f", "#5454547a"],
         shadow: ["rgba(0, 0, 0, .1) 0 2px 4px 0", ""],
         shadow2: ["0 12px 32px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08)", ""],
@@ -125,8 +124,6 @@ const appState = {
         text: ["black", "white"],
         textSub1: ["#5f5f5f", "#c0c0c0"],
         link: ["#0b57d0", "#9bc2ff"],
-        linkNav: ["#3876d9", "#e6e6e6"],
-        linkNavHover: ["var(--link)", ""],
 
         /* Button default */
         btnBg: ["#fff", "var(--bgTop1)"],
