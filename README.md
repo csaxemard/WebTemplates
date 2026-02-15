@@ -1,13 +1,13 @@
 # WebTemplates
 
-### Concept
+## Concept
 Ce site regroupe les designs de pages et de composants que j'utilise sur les sites que je crée.  
 Avec également une liste de sites dont le design me sert de référence.  
 Et une liste d'outils pour aider à la création de sites.
 
 <br>
 
-### Technologies
+## Technologies
 - Front-end : Vue.js
 
 <br>
@@ -18,13 +18,14 @@ Et une liste d'outils pour aider à la création de sites.
 
 <br>
 
-### Compilation
-- Chaque commit doit inclure le numéro de version, pour s'y retrouver
-- `node dev\incrementVersion.js` : incrémente la version de APP_VERSION.js (à exécuter après chaque commit)
+### Procédure de commit
+- `git commit -m message`
+- `node dev\incrementVersion.js` : Incrémente APP_VERSION.js + git tag version
+- `node dev\gitPush.js` : Push le commit et les tags
 
 <br>
 
-### Backlog
+## Backlog
 - finir de réparer le style de CardList
 - Enlever les trucs inutiles de script setup de cardlist
 - Styliser les Web references
@@ -35,6 +36,8 @@ Et une liste d'outils pour aider à la création de sites.
 
 ### Idées
 - pour une liste de boutons, des boutons au design généré aléatoirement ? Des blobs ? Des oeufs ? (comme le blob de app.haikei.app)
+
+<br>
 
 ##
 Date début : 12 février 2026

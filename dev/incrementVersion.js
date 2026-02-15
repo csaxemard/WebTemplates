@@ -4,6 +4,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { execSync } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,9 +25,6 @@ if (!match) {
 let [_, major, minor, patch] = match.map(Number);
 let oldVersion = `${major}.${minor}.${patch}`
 
-console.log(oldVersion)
-
-
 // Incrémente le patch
 patch += 1;
 const newVersion = `${major}.${minor}.${patch}`;
@@ -46,3 +44,15 @@ content = content.replace(
 fs.writeFileSync(filePath, content, "utf8");
 
 console.log(`Version updated to ${newVersion}`);
+
+
+
+// Ajoute tag au commit, push, push --tags
+
+try {
+    execSync(`git tag ${oldVersion}`, { stdio: "inherit" });
+    console.log(`Git tag ${oldVersion} ajouté au dernier commit`);
+} catch (err) {
+    console.error("Erreur lors de git tag :", err.message);
+}
+
