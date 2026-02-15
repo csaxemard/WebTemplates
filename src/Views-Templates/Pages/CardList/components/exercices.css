@@ -64,7 +64,7 @@
         /* prop self */
         background-color: #fff;
         cursor: pointer;
-        transition: scale .1s, border-color .2s, box-shadow .2s;
+        transition: scale .1s, border-color .2s, box-shadow .2s, var(--transitionDefaults);
         
         /* prop content */
         font-size: medium;
@@ -92,7 +92,7 @@
         color: #fff;
         border: none;
         font-size: small;
-        transition: background-color .2s;
+        transition: background-color .2s, var(--transitionDefaults);
 
         &:active {
             background-color: #5c5c5c;
@@ -114,7 +114,7 @@
         height: 50px;
         background-color: #525252;
         opacity: 0;
-        transition: opacity .3s, font-size .3s;
+        transition: opacity .3s, font-size .3s, var(--transitionDefaults);
 
         /* Position du contenu */
         display: flex;

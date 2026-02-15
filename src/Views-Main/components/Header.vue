@@ -14,7 +14,6 @@
 
     const openedDrawerIndex = ref(null)
     const headerIsHidden = ref(false)
-    const headerIsHiddenNb = computed(() => headerIsHidden.value ? 0 : 1)
 </script>
 
 <template>
@@ -33,7 +32,7 @@
                     <RouterLink class="navDrawerHandle navLink"
                         :to="`/${cat.relUrl}`"
                         >
-                        <span class="category">{{ cat.name }}</span><span class="noDeco"> ▿</span>
+                        <span class="category">{{ cat.name }}</span><span class="charAsIcon"> ▿</span>
                     </RouterLink>
     
                     <Transition name="fade">
@@ -68,8 +67,8 @@
         /* Vars */
         --headerHeight: 70px;
 
-        transition: height .5s;
-        height: calc(var(--headerHeight) * v-bind(headerIsHiddenNb));
+        transition: height .5s, var(--transitionDefaults);
+        height: calc(var(--headerHeight) * v-bind("headerIsHidden ? 0 : 1"));
     }
 
     header {
@@ -81,7 +80,7 @@
         /* prop */
         background-color: var(--bg);
         box-shadow: var(--shadow);
-        transition: transform .5s, opacity .2s;
+        transition: transform .5s, opacity .2s, var(--transitionDefaults);
 
         /* content pos */
         display: flex;
@@ -103,11 +102,11 @@
     .themeSwitch {
         font-size: large;
         background-color: transparent;
-        transition: rotate .5s ease-out;
+        transition: rotate .5s ease-out, var(--transitionDefaults);
 
         &:active {
             rotate: 360deg;
-            transition: rotate 0s;
+            transition: rotate 0s, var(--transitionDefaults);
         }
     }
 
@@ -131,7 +130,7 @@
             font-size: var(--linkNavFontSize);
             text-decoration: none;
             border-radius: 50px;
-            transition: background-color .2s;
+            transition: background-color .2s, var(--transitionDefaults);
             
             &:hover {
                 color: var(--linkNavHover);
@@ -153,11 +152,11 @@
                 padding: 10px 15px;
                 
                 /* prop */
-                transition: color 0.25s;
+                transition: color 0.25s, var(--transitionDefaults);
                 
                 &:hover {
                     background-color: transparent;
-                    color: var(--emph);
+                    /* color: var(--emph); */
                 }
             }
         }
@@ -232,7 +231,7 @@
        
         /* prop */
         background-color: var(--bgTop1);
-        transition: top .5s;
+        transition: top .5s, var(--transitionDefaults);
 
         &.headerIsHidden {
             top: 10px

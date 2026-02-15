@@ -2,9 +2,9 @@
 
 #root {
     --font: Verdana, Geneva, Tahoma, sans-serif;
-    --transitionsDefault: background .5s, color .5s;
+    --transitionDefaults: background-color .5s, color .5s;
     --linkNavFontSize: 19px;
-    
+
     /* Les variables de thèmes sont stockées dans le appState et générées automatiquement */
 }
 
@@ -19,7 +19,7 @@
 
     text-underline-offset: 3px;
 
-    transition: var(--transitionsDefault);
+    transition: var(--transitionDefaults);
 
     /* transition-property: width, height, top, right, bottom, left,
         transform, scale, rotate,
@@ -27,12 +27,25 @@
     transition-duration: .5s; */
 }
 
-h1 {
+h1,
+h2 {
     font-weight: normal;
 }
 
 a {
     color: var(--link);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+    &[target="_blank"]:hover::after {
+        content: "⇗";
+        display: inline-block;
+        margin-left: 7px;
+        text-decoration: none;
+        line-height: 1;
+    }
 }
 
 button {
@@ -60,9 +73,9 @@ button {
     &:active {
         background-color: var(--btnBgActive);
         scale: .9;
-        transition: scale 0s;
+        transition: scale 0, var(--transitionDefaults);
     }
-} 
+}
 
 
 
@@ -72,9 +85,6 @@ button {
     line-height: 1;
 }
 
-
-
-/* --- This app --- */
 
 
 
@@ -123,7 +133,7 @@ button {
 /* fade */
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity .3s, transform .3s !important;
+    transition: opacity .3s, transform .3s, var(--transitionDefaults) !important;
 }
 
 .fade-enter-from,
@@ -135,7 +145,7 @@ button {
 /* slideVert */
 .slideVert-enter-active,
 .slideVert-leave-active {
-    transition: transform .3s opacity .3s !important;
+    transition: transform .3s opacity .3s, var(--transitionDefaults) !important;
 }
 
 .slideVert-enter-from,

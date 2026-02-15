@@ -98,7 +98,7 @@
             width: 30px;
             height: 30px;
             /* prop self */
-            transition: scale .2s, rotate .2s;
+            transition: scale .2s, rotate .2s, var(--transitionDefaults);
             visibility: hidden;
 
 
@@ -131,7 +131,7 @@
             height: 30px;
             /* border-radius: 50%; */
             scale: 1;
-            transition: scale .3s, rotate .5s;
+            transition: scale .3s, rotate .5s, var(--transitionDefaults);
 
             &:active {
                 rotate: 360deg;

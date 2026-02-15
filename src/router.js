@@ -39,7 +39,7 @@ routes.push({
     path: "/:pathMatch(.*)*",
     component: Error404,
     name: "Error404",
-    meta: { title: "Page non trouvée" },
+    meta: { title: `404 | ${appState.titleDefault}` },
 })
 
 const router = createRouter({

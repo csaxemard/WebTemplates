@@ -6,10 +6,10 @@ import Home from "@/Views-Main/Home.vue";
 
 // --- Functions ---
 
-function buildCategories(title) {
+function buildCategories(templatesModules, title) {
     const categoriesMap = {};
 
-    for (const path in modules) {
+    for (const path in templatesModules) {
         const parts = path.split("/");
 
         const templatesIndex = parts.indexOf("Views-Templates");
@@ -40,10 +40,10 @@ function buildCategories(title) {
         }
 
         categoriesMap[folder].components.push({
-            name: modules[path].config?.name ?? file,
-            component: modules[path].default,
+            name: templatesModules[path].config?.name ?? file,
+            component: templatesModules[path].default,
             relUrl,
-            title: `${modules[path].config?.name ?? file} | ${title}`,
+            title: `${templatesModules[path].config?.name ?? file} | ${title}`,
         });
     }
 
@@ -52,7 +52,7 @@ function buildCategories(title) {
 
 export function initCssThemeVariables() {
     const style = document.createElement("style")
-    
+
     let light = "#root {\n"
     let dark = "#root.dark {\n"
 
@@ -63,7 +63,7 @@ export function initCssThemeVariables() {
 
     light += "}";
     dark += "}";
-    
+
     style.textContent = "/* [Dev note] Style generated from appState.js */\n" + light + "\n" + dark
     style.id = "css-theme-variables"
     style.dataset.devNote = "Style generated from appState.js"
@@ -94,12 +94,9 @@ export function switchTheme() {
 
 // --- Main ---
 
-const modules = import.meta.glob("@/Views-Templates/**/*.vue", { eager: true });
-const title = "Web Templates";
-
-// appState :
 const appState = {
-    titleDefault: title,
+    APP_VERSION: "0.2",
+    titleDefault: "Web Templates",
 
     cssThemeVariables: {
         // cssVarName: ["valueLight", "valueDark", "maybe3rdTheme?"]
@@ -119,8 +116,6 @@ const appState = {
         shadow: ["rgba(0, 0, 0, .1) 0 2px 4px 0", ""],
         shadow2: ["0 12px 32px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08)", ""],
 
-        
-        /* Accents */
         /* Accents */
         emph: ["#ff6052", "#ff7e72"],
         emph2: ["#ffa632", ""],
@@ -130,9 +125,9 @@ const appState = {
         text: ["black", "white"],
         textSub1: ["#5f5f5f", "#c0c0c0"],
         link: ["#0b57d0", "#9bc2ff"],
-        linkNav: ["#213547", "#0c35ff"],
+        linkNav: ["#3876d9", "#e6e6e6"],
         linkNavHover: ["var(--link)", ""],
-        
+
         /* Button default */
         btnBg: ["#fff", "var(--bgTop1)"],
         btnBgHover: ["#ecf2fc", "var(--bgTop2)"],
@@ -141,7 +136,7 @@ const appState = {
 
     theme: ref("dark"),
 
-    mainRoutes: [{ path: "/", component: Home, meta: { title: `${title}` } }],
+    mainRoutes: [{ path: "/", component: Home, meta: { title: "Web Templates" } }],
 
     // categories: [
     //     {
@@ -158,9 +153,10 @@ const appState = {
     //     },
     // ],
 };
-appState.categories = buildCategories(title);
 
-// watch appState reactive values :
+const templatesModules = import.meta.glob("@/Views-Templates/**/*.vue", { eager: true });
+appState.categories = buildCategories(templatesModules, appState.titleDefault);
+
 watch(appState.theme, (themeVal) => {
     updateTheme(themeVal);
 });

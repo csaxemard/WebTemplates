@@ -32,10 +32,18 @@
         color: var(--text);
         font-family: var(--font);
 
-        > .viewContainer {
+        & > .viewContainer {
             flex: 1 1 auto;    /* flex: 1; */
             display: flex;
             flex-direction: column;
+            
+            & :deep(main) {
+                flex: 1;
+            }
+            & :deep(main.centeredMain) {
+                width: 80vw;
+                margin: 20px auto;
+            }
         }
     }
 </style>

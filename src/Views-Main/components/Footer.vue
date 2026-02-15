@@ -1,9 +1,12 @@
 <script setup>
+    import appState from '@/appState.js';
 
 </script>
 
 <template>
-    <footer><p>&copy; 2026 Website Templates by <a target="_" href="https://github.com/csaxemard">csaxemard</a></p></footer>
+    <footer>
+        <p>&copy; 2026 Website Templates v{{ appState.APP_VERSION }} by <a target="_blank" href="https://github.com/csaxemard">csaxemard</a></p>
+    </footer>
 </template>
 
 <style scoped>
@@ -18,16 +21,6 @@
         p {
             font-size: small;
             color: var(--textSub1);
-        }
-        a {
-            text-decoration: none;
-
-            &:hover {
-                &:after {
-                    content: " ⇗";
-                    line-height: 1;
-                }
-            }
         }
     }
 </style>
