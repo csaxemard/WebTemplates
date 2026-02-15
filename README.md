@@ -2,7 +2,8 @@
 
 ### Concept
 Ce site regroupe les designs de pages et de composants que j'utilise sur les sites que je crée.  
-Il contient également une liste de sites dont le design me sert de référence.
+Avec également une liste de sites dont le design me sert de référence.  
+Et une liste d'outils pour aider à la création de sites.
 
 <br>
 
@@ -14,6 +15,12 @@ Il contient également une liste de sites dont le design me sert de référence.
 ### Utilisation
 - `npm install` : Installe les dépendances
 - `launch.bat` : Lance l'application avec vite
+
+<br>
+
+### Compilation
+- Chaque commit doit inclure le numéro de version, pour s'y retrouver
+- `node dev\incrementVersion.js` : incrémente la version de APP_VERSION.js (à exécuter après chaque commit)
 
 <br>
 

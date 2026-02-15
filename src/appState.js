@@ -1,7 +1,7 @@
 import { ref, watch } from "vue";
 
 import Home from "@/Views-Main/Home.vue";
-
+import APP_VERSION from "./APP_VERSION.js";
 
 
 // --- Functions ---
@@ -95,7 +95,7 @@ export function switchTheme() {
 // --- Main ---
 
 const appState = {
-    APP_VERSION: "0.4", // Last commit was 0.3
+    APP_VERSION: APP_VERSION,
     titleDefault: "Web Templates",
 
     cssThemeVariables: {
