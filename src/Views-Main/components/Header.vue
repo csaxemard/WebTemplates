@@ -17,7 +17,7 @@
 </script>
 
 <template>
-    <div class="componentContainer" :class="appState.theme.value">
+    <div class="componentContainer">
         <header :class="{headerIsHidden: headerIsHidden }">
             <RouterLink to="/" class="appName">Web Templates</RouterLink>
     
@@ -66,18 +66,27 @@
 
     .componentContainer {
         /* Vars */
+        
         --headerHeight: 70px;
+
+        /* Color vars */
+
+        --navDrawerBorder: transparent;
+        
         --linkNav: #3876d9;
         --linkNavHover: #4cc0ff;
         --linkNavDrawerHover: #4cc0ff;
+
         --btnBgNavHoverColored: #ecf2fc;
         --btnBgNavActiveColored: #bdd6ff;
         
-        &.dark {
-            --linkNavDrawerHover: #4cc0ff;
+        .dark & {
+            --navDrawerBorder: var(--dividerColor);
+            
             --linkNav: #e6e6e6;
             --linkNavHover: #42b883;
             --linkNavDrawerHover: #42b883;
+
             --btnBgNavHoverColored: var(--bgTop2);
             --btnBgNavActiveColored: #757575;
         }
@@ -205,15 +214,16 @@
             .navDrawer {
                 /* pos */
                 position: absolute;
-                top: 40px;
+                top: v-bind("appState.theme.value == `dark` ? `75px` : `45px`");
                 padding: 10px 0;
-                border-radius: 12px;
                 width: max-content;
                 max-width: 300px;
                 z-index: 5;
                 
                 /* prop */
                 background-color: var(--bg);
+                border: 1px solid var(--navDrawerBorder);
+                border-radius: 12px;
                 box-shadow: var(--shadow2);
 
                 /* content pos */
@@ -234,6 +244,19 @@
                     z-index: -1;
                     /* background-color: rgba(0, 0, 0, 0.066); */
                 }
+                &::after {
+                    /* Triangle */
+                    position: absolute;
+                    content: '';
+                    bottom: 100%;
+                    left: 50%;
+                    width: 0;
+                    height: 0;
+                    margin-left: -10px;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-bottom: 10px solid var(--navDrawerBorder);
+                }
             }
         }
     }
@@ -245,7 +268,7 @@
         right: 10px;
         width: 30px;
         height: 20px; 
-            padding-top: calc(2px * v-bind("headerIsHidden ? 2.5 : 1"));
+        padding-top: calc(2px * v-bind("headerIsHidden ? 2.5 : 1"));
        
         /* prop */
         background-color: var(--bgTop1);

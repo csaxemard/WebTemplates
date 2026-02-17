@@ -5,13 +5,14 @@
 
 <template>
     <footer>
-        <p>&copy; 2026 Website Templates v{{ appState.APP_VERSION }} by <a target="_blank" href="https://github.com/csaxemard">csaxemard</a></p>
+        <p>&copy; 2026 {{ appState.titleDefault }} v{{ appState.APP_VERSION }} by <a target="_blank" href="https://github.com/csaxemard">csaxemard</a></p>
     </footer>
 </template>
 
 <style scoped>
     footer {
         /* pos */
+        margin-top: 20px;
         padding: 15px;
         width: 100%;
 

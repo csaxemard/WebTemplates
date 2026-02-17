@@ -108,12 +108,15 @@ const appState = {
         bgTop2: ["#e0e0e0", "#606060"],
         bgTop3: ["#f0f0f0", "#707070"],
         bgTop1Colored: ["#ecf2fc", "#4b5056"],
+        bgSub1: ["#ffffff", "#2f2f2f"],
 
         /* Effects */
-        boxBorder: ["transparent", "var(--divider)"],
-        divider: ["#3c3c3c1f", "#5454547a"],
+        boxBorder: ["transparent", "var(--dividerColor)"],
+        dividerColor: ["#5454547a", "#6a6a6a"],
+        divider: ["1px solid var(--dividerColor)"],
         shadow: ["rgba(0, 0, 0, .1) 0 2px 4px 0", ""],
         shadow2: ["0 12px 32px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08)", ""],
+        shadowUniform: ["#bebebe 0 0 5px 0", "#353535ff 0 0 5px 0"],
 
         /* Accents */
         emph: ["#ff6052", "#ff7e72"],
@@ -123,6 +126,7 @@ const appState = {
         /* Text default */
         text: ["black", "white"],
         textSub1: ["#5f5f5f", "#c0c0c0"],
+        textSub2: ["#707070", "#909090"],
         link: ["#0b57d0", "#9bc2ff"],
 
         /* Button default */

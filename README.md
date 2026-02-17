@@ -10,29 +10,21 @@ Et une liste d'outils pour aider à la création de sites.
 ## Technologies
 - Front-end : Vue.js
 
-<br>
-
 ### Utilisation
 - `npm install` : Installe les dépendances
 - `launch.bat` : Lance l'application avec vite
 
-<br>
-
 ### Procédure de commit
 - `git commit -m message`
 - `node dev\incrementVersion.js` : Incrémente APP_VERSION.js + git tag version
-- `node dev\gitPush.js` : Push le commit et les tags
+- `dev\gitPush.bat` : Push le commit et les tags
 
 <br>
 
 ## Backlog
-- finir de réparer le style de CardList
+- (next) finir de réparer le style de CardList
 - Enlever les trucs inutiles de script setup de cardlist
-- Styliser les Web references
-- Home: Transformer la liste de references en outils pour y mettre un commentaire, parreil pour les outils
-- Home: Indenter un peu resources par rapport au h1
-
-<br>
+- Adapter le navbar au mobile
 
 ### Idées
 - pour une liste de boutons, des boutons au design généré aléatoirement ? Des blobs ? Des oeufs ? (comme le blob de app.haikei.app)

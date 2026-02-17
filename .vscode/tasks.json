@@ -19,10 +19,6 @@
             "type": "shell",     // cmd only ("terminal.integrated.defaultProfile.windows": "Command Prompt")
             "command": "cd ${workspaceFolder}\\dev && node incrementVersion.js",
             "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -35,12 +31,8 @@
         {
             "label": "Git push",
             "type": "shell",     // cmd only ("terminal.integrated.defaultProfile.windows": "Command Prompt")
-            "command": "cd ${workspaceFolder}\\dev && node gitPush.js",
+            "command": "cd ${workspaceFolder}\\dev && gitPush.bat",
             "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
             "presentation": {
                 "echo": true,
                 "reveal": "always",
