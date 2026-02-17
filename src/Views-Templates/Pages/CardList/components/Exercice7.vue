@@ -52,9 +52,9 @@
             <div class="colorChoice">
                 <p>Choisissez une couleur pour ce bloc</p>
                 <div>
-                    <button class="large reset char-icon" @click="resetColor()">⭯</button>
+                    <button class="large reset charAsIcon" @click="resetColor()">⭯</button>
                     <input type="color" name="color" id="color" v-model="color">
-                    <span class="large char-icon">➜</span>
+                    <span class="large charAsIcon">➜</span>
                     <div class="result" :style="{backgroundColor: color}"></div>
                 </div>
             </div>

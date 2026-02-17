@@ -23,6 +23,7 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        z-index: 0;
 
         /* self prop */
         background-color: var(--bg);
@@ -33,7 +34,8 @@
         font-family: var(--font);
 
         & > .viewContainer {
-            flex: 1 1 auto;    /* flex: 1; */
+            flex: 1;
+            z-index: 1;
             display: flex;
             flex-direction: column;
             
@@ -44,6 +46,9 @@
                 width: 80vw;
                 margin: 50px auto 0 auto;
             }
+        }
+        & > .componentContainer {
+            z-index: 2;
         }
     }
 </style>

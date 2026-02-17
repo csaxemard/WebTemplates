@@ -89,6 +89,9 @@ button {
 .small {
     font-size: small;
 }
+.large {
+    font-size: x-large;
+}
 .textSub1 {
     color: var(--textSub1);
 }

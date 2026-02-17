@@ -116,7 +116,7 @@ const appState = {
         divider: ["1px solid var(--dividerColor)"],
         shadow: ["rgba(0, 0, 0, .1) 0 2px 4px 0", ""],
         shadow2: ["0 12px 32px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08)", ""],
-        shadowUniform: ["#bebebe 0 0 5px 0", "#353535ff 0 0 5px 0"],
+        shadowUniform: ["#bebebe 0 0 5px 0", "#353535 0 0 5px 0"],
 
         /* Accents */
         emph: ["#ff6052", "#ff7e72"],

@@ -21,8 +21,8 @@
             <div class="flexright">
                 <div class="compteur">
                     <button @click="modified++">Augmenter le compteur</button>
-                    <p class="t-small">Compteur (sans v-once) : {{ modified }}</p>
-                    <p class="t-small" v-once>Compteur (avec v-once) : {{ modified }}</p>
+                    <p class="small">Compteur (sans v-once) : {{ modified }}</p>
+                    <p class="small" v-once>Compteur (avec v-once) : {{ modified }}</p>
                 </div>
             </div>
         </div>

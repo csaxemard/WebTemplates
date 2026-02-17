@@ -1,18 +1,18 @@
 .exercice {
     margin-bottom: 30px;
-    background-color: var(--bg-color);
+    background-color: var(--bg);
     outline: 10px solid #ffffff46;
     width: 550px;
     padding: 15px;
     position: relative;
-    
+
 
     &.folded {
         box-shadow: inset #1e1e1e 0 -5px 10px -5px;
-        border-radius: 12px 12px 0 0 ;
+        border-radius: 12px 12px 0 0;
         box-shadow: inset #1e1e1e 0 -5px 10px -5px;
         outline: none;
-        
+
         &:before {
             content: '';
             position: absolute;
@@ -60,12 +60,12 @@
         position: relative;
         padding: 10px;
         border: #fff0 solid 5px;
-        
+
         /* prop self */
-        background-color: #fff;
+        background-color: #fff !important;
         cursor: pointer;
         transition: scale .1s, border-color .2s, box-shadow .2s, var(--transitionDefaults);
-        
+
         /* prop content */
         font-size: medium;
         color: black;
@@ -79,7 +79,7 @@
         }
 
         &:disabled {
-            background-color: #727272;
+            background-color: #727272 !important;
             border-color: transparent;
             scale: 1;
             cursor: auto;
@@ -88,14 +88,14 @@
 
     button.reset {
         /* Autre type de bouton */
-        background-color: #525252;
+        background-color: #525252 !important;
         color: #fff;
         border: none;
         font-size: small;
         transition: background-color .2s, var(--transitionDefaults);
 
         &:active {
-            background-color: #5c5c5c;
+            background-color: #5c5c5c !important;
             transition: none;
         }
     }
@@ -104,6 +104,18 @@
         color: #ff9898;
     }
 
+    .flexright {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        font-size: small;
+    }
+
+
+    input,
+    textarea {
+        border-radius: 0 !important;
+    }
 
 
     /* Badge */

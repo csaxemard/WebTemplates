@@ -6,6 +6,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 
+console.log("\n--- incrementVersion.js ---\n")
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -43,7 +45,7 @@ content = content.replace(
 
 fs.writeFileSync(filePath, content, "utf8");
 
-console.log(`Version updated to ${newVersion}`);
+console.log(`Version mise à jour : ${oldVersion} -> ${newVersion}\n`);
 
 
 
@@ -51,7 +53,7 @@ console.log(`Version updated to ${newVersion}`);
 
 try {
     execSync(`git tag ${oldVersion}`, { stdio: "inherit" });
-    console.log(`Git tag ${oldVersion} ajouté au dernier commit`);
+    console.log(`Git tag ${oldVersion} ajouté au dernier commit\n`);
 } catch (err) {
     console.error("Erreur lors de git tag :", err.message);
 }

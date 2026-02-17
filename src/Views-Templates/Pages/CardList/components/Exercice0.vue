@@ -1,13 +1,12 @@
 <script setup>
-    import { inject } from 'vue';
+    import { reactive, inject } from 'vue';
 
     import "./exercices.css";
-    let stateEx0 = inject("stateEx0") // récupère stateEx0 depuis un autre module
     let confettiFromEle = inject("confettiFromEle")
     let cookieDo = inject("cookieDo")
-
-
-
+    
+    
+    
     function increment() {
         stateEx0.compteur++;
         cookieDo.set("ex0-compteur", stateEx0.compteur)
@@ -15,14 +14,15 @@
             confettiFromEle("#exercice0 .badge")
         }
     }
-
+    
     function reset() {
         stateEx0.compteur = 0;
         cookieDo.set("ex0-compteur", "0")
     }
-
-
-
+    
+    
+    
+    let stateEx0 = reactive({ compteur: 0 })
     let exeNumber = 0;
     let exeName = "Test"
 
